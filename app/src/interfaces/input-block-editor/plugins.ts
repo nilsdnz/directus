@@ -1,5 +1,6 @@
 import BaseAttachesTool from '@editorjs/attaches';
 import BaseImageTool from '@editorjs/image';
+import Table from '@editorjs/table';
 import { unexpectedError } from '@/utils/unexpected-error';
 import { useBus } from './bus';
 
@@ -212,5 +213,18 @@ export class ImageTool extends BaseImageTool {
 		}
 
 		return wrapperElement;
+	}
+}
+
+export class TableTool extends Table {
+	static get sanitize() {
+		return {
+			b: true,
+			a: {
+				href: true,
+			},
+			i: true,
+			br: {},
+		};
 	}
 }

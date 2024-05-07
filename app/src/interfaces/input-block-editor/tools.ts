@@ -12,6 +12,7 @@ import UnderlineTool from '@editorjs/underline';
 import { Alignment } from './alignment';
 import ToggleBlock from 'editorjs-toggle-block';
 import { AttachesTool, ImageTool, TableTool } from './plugins';
+import AnchorTune from './tunes/anchor-tune';
 
 export type UploaderConfig = {
 	baseURL: string | undefined;
@@ -32,6 +33,7 @@ export default function getTools(
 		header: {
 			class: HeaderTool,
 			inlineToolbar: true,
+			tunes: ['anchor'],
 		},
 		list: {
 			class: NestedListTool,
@@ -109,17 +111,19 @@ export default function getTools(
 	// editor.js tools means we need to already declare alignment in the tools object before we can assign it to other tools.
 	if ('alignment' in tools) {
 		if ('paragraph' in tools) {
-			tools['paragraph'].tunes = ['alignment'];
+			tools['paragraph'].tunes = [...(tools['paragraph'].tunes ?? []), 'alignment'];
 		}
 
 		if ('header' in tools) {
-			tools['header'].tunes = ['alignment'];
+			tools['header'].tunes = [...(tools['header'].tunes ?? []), 'alignment'];
 		}
 
 		if ('quote' in tools) {
-			tools['quote'].tunes = ['alignment'];
+			tools['quote'].tunes = [...(tools['quote'].tunes ?? []), 'alignment'];
 		}
 	}
+
+	tools.anchor = AnchorTune;
 
 	return tools;
 }

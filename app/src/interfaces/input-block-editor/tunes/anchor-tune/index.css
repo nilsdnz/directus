@@ -1,0 +1,30 @@
+.cdx-anchor-tune-wrapper {
+	border: 1px solid var(--theme--foreground-subdued);
+	border-radius: 6px;
+	margin: 0px 3px;
+	display: grid;
+	grid-template-columns: auto auto 1fr;
+	grid-template-rows: auto;
+}
+
+.cdx-anchor-tune-icon {
+	width: 26px;
+	height: 26px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--theme--form--field--input--foreground);
+}
+
+.cdx-anchor-tune-icon svg {
+	vertical-align: baseline;
+}
+
+.cdx-anchor-tune-input {
+	width: 100%;
+	border: 0;
+	box-sizing: border-box;
+	outline: none;
+	background-color: initial;
+	font-size: 14px;
+}
